@@ -13,7 +13,7 @@ import "swiper/css/scrollbar";
 
 export default function GamesSwiper() {
   return (
-    <div className="relative mt-8 overflow-hidden">
+    <div className="main-container relative mt-8 overflow-hidden">
       <div className="flex gap-3 px-15 mb-6 max-sm:justify-between max-sm:px-4 max-sm:mb-3">
         <button className="swiper-button-prev-custom3">
           <img src={leftArrow} alt="left arrow" />
