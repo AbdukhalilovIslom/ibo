@@ -1,6 +1,6 @@
 import Products from './Products';
 import Questions from './Questions';
-import Hero from './hero';
+import Hero from './Hero';
 
 export default function Main() {
 	return (
