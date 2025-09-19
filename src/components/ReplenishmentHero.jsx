@@ -7,6 +7,8 @@ export default function Hero() {
 	const [selectedGame, setSelectedGame] = useState('Выберите игру');
 	const [amount, setAmount] = useState('1000');
 	const [email, setEmail] = useState('');
+	const countries = ['UAH', 'TRY'];
+	const [country, setCountry] = useState('TRY');
 	const [promocode, setPromocode] = useState('');
 	const [selectedTier, setSelectedTier] = useState(0); // Default to -20% (1000₽)
 	const [isInstantTopUp, setIsInstantTopUp] = useState(false);
@@ -60,17 +62,26 @@ export default function Hero() {
 					Безопасно и быстро
 				</p>
 				<div className='flex gap-2.5'>
-					<button className='p-2.5 px-6 !text-white border-white border rounded-2xl font-bold text-xl max-sm:text-xs max-sm:px-4 max-sm:py-0 max-sm:rounded-sm max-sm:h-8'>
-						UAH
-					</button>
-					<button className='flex items-center gap-1 p-2.5 bg-white text-primary rounded-2xl font-bold text-xl max-sm:text-xs max-sm:px-2 max-sm:py-0 max-sm:rounded-sm max-sm:h-8'>
-						<img
-							src={turkiye}
-							alt='turkish flag'
-							className='w-9 h-6 max-sm:w-6 max-sm:h-4'
-						/>
-						TRY
-					</button>
+					{countries.map(item => (
+						<button
+							key={item}
+							onClick={() => setCountry(item)}
+							className={`flex items-center gap-1 p-2.5 rounded-2xl font-bold text-xl  hover:opacity-90 cursor-pointer max-sm:text-xs max-sm:px-2 max-sm:py-0 max-sm:rounded-sm max-sm:h-8 ${
+								country === item
+									? 'bg-white text-primary'
+									: 'bg-transparent text-white border-white border'
+							}`}
+						>
+							{item == 'TRY' && (
+								<img
+									src={turkiye}
+									alt='turkish flag'
+									className='w-9 h-6 max-sm:w-6 max-sm:h-4'
+								/>
+							)}
+							{item}
+						</button>
+					))}
 				</div>
 				<div className='w-full sm:max-w-md mt-6 space-y-2.5 max-sm:w-full'>
 					{/* Select Game Dropdown */}
@@ -312,14 +323,14 @@ export default function Hero() {
 				<div className='flex flex-col gap-2'>
 					<h3 className='text-white font-bold max-sm:text-sm'>Способ оплаты</h3>
 					<div className='bg-primary grid grid-cols-2 gap-1'>
-						<button className='bg-secondary rounded-l-xl px-4 py-2 text-sm font-bold max-sm:text-xs cursor-pointer'>
+						<button className='bg-secondary text-primary rounded-l-xl px-4 py-2 text-sm font-bold max-sm:text-xs cursor-pointer'>
 							Картой
 						</button>
-						<button className='bg-white rounded-r-xl px-4 py-2 text-sm font-bold max-sm:text-xs cursor-pointer'>
+						<button className='bg-white text-primary rounded-r-xl px-4 py-2 text-sm font-bold max-sm:text-xs cursor-pointer'>
 							Криптовалютой
 						</button>
 					</div>
-					<button className='bg-secondary rounded-xl px-4 py-2 font-bold max-sm:text-sm cursor-pointer'>
+					<button className='bg-secondary text-primary rounded-xl px-4 py-2 font-bold max-sm:text-sm cursor-pointer'>
 						Пополнить
 					</button>
 				</div>
